@@ -64,8 +64,14 @@ ul {
 
 .accordion__item:hover .accordion__content {
   display: block;
+  padding: 0.7rem 0 1rem;
   cursor: pointer;
   animation: smooth .5s ease-in;
+}
+
+.accordion__label {
+  display: flex;
+  flex-direction: column;
 }
 
 .accordion__header {
@@ -82,14 +88,23 @@ ul {
 
 .accordion__header-static {
   margin-right: 1.4rem;
+  transition: .3s all;
+}
+
+.accordion__header:active .accordion__header-static {
+  transform: scale(0.97);
 }
 
 .accordion__header-interactive {
   visibility: hidden;
 }
 
-.accordion__toggle:checked ~ .accordion__header {
+.accordion__toggle:checked ~ .accordion__label .accordion__header {
   background-color: rgb(252, 139, 127);
+}
+
+.accordion__toggle:checked ~ .accordion__label .accordion__header-interactive {
+  transform: rotate(-45deg);
 }
 
 .accordion__toggle {
@@ -100,17 +115,22 @@ ul {
   display: none;
 }
 
-.accordion__toggle:checked ~ .accordion__content {
+.accordion__toggle:checked ~ .accordion__label .accordion__content {
   display: block;
   padding: 0.7rem 0 1rem;
   height: 100%;
   animation: smooth .5s ease-in;
 }
 
+.accordion__content:active .accordion__image {
+  transform: scale(0.97);
+}
+
 .accordion__image {
   width: 60%;
   display: block;
   margin: 0 auto;
+  transition: .3s all;
   animation: smooth 1s ease-in;
   animation: emersed .8s ease-out;
 }
