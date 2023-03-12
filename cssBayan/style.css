@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+  background-color: #e4e4e4;
+}
+
+.page__wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page__header {
+  font-weight: 700;
+}
+
+.accordion__wrapper {
+  width: 100%;
+  border-radius: 0.625rem;
+  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+.accordion__item {
+  background-color: #fff;
+  overflow: hidden;
+  transition: max-height .8s ease-in;
+}
+
+.accordion__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  outline: none;
+  background-color: #fff;
+  transition: .3s all;
+}
+
+.accordion__header-static {
+  transition: .3s all;
+}
+
+.accordion__header:active .accordion__header-static {
+  transform: scale(0.97);
+}
+
+.accordion__toggle:checked ~ .accordion__label .accordion__header {
+  background-color: rgb(252, 139, 127);
+}
+
+.accordion__toggle:checked ~ .accordion__label .accordion__header-interactive {
+  transform: rotate(-45deg);
+}
+
+.accordion__toggle {
+  display: none;
+}
+
+.accordion__content {
+  display: none;
+}
+
+.accordion__toggle:checked ~ .accordion__label .accordion__content {
+  display: block;
+  padding: 0.7rem 0 1rem;
+  height: 100%;
+  animation: smooth .5s ease-in;
+}
+
+.accordion__content:active .accordion__image {
+  transform: scale(0.97);
+}
+
+.accordion__image {
+  display: block;
+  margin: 0 auto;
+  transition: .3s all;
+  animation: smooth 1s ease-in;
+}
+
+@keyframes smooth {
+  from { opacity: 0; }
+  to { opacity: 1 }
+}
+
+@media screen and (max-width: 767px) {
+
+  .content__wrapper {
+    width: 90%;
+  }
+
+  .page__header {
+    margin-bottom: 0.9rem;
+    font-size: 1.5rem;
+  }
+
+  .accordion__header {
+    padding: 0.9rem;
+    font-size: 1.1rem;
+  }
+
+  .accordion__header-static {
+    margin-right: 1.2rem;
+  }
+
+  .accordion__header-interactive {
+    visibility: visible;
+  }
+
+  .accordion__image {
+    width: 95%;
+    animation: emersed-mobile .8s ease-out;
+  }
+
+  @keyframes emersed-mobile {
+    from { width: 0%; }
+    to { width: 95% }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .content__wrapper {
+    width: 80%;
+  }
+
+  .page__header {
+    margin-bottom: 1.0rem;
+    font-size: 1.6rem;
+  }
+
+  .accordion__header {
+    padding: 1.0rem;
+    font-size: 1.125rem;
+  }
+
+  .accordion__header-static {
+    margin-right: 1.3rem;
+  }
+
+  .accordion__header-interactive {
+    visibility: visible;
+  }
+
+  .accordion__image {
+    width: 80%;
+    animation: emersed-tablet .8s ease-out;
+  }
+
+  @keyframes emersed-tablet {
+    from { width: 0%; }
+    to { width: 80% }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .content__wrapper {
+    width: 50%;
+  }
+
+  .page__header {
+    margin-bottom: 1.1rem;
+    font-size: 1.8rem;
+  }
+
+  .accordion__header {
+    padding: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .accordion__header-static {
+    margin-right: 1.4rem;
+  }
+
+  .accordion__header-interactive {
+    visibility: hidden;
+  }
+
+  .accordion__image {
+    width: 60%;
+    animation: emersed .8s ease-out;
+  }
+
+  @keyframes emersed {
+    from { width: 0%; }
+    to { width: 60% }
+  }
+}
+
+@media (hover: hover) {
+
+  .accordion__wrapper:hover .accordion__header-interactive {
+    visibility: visible;
+  }
+
+  .accordion__item:hover .accordion__header {
+    background-color: rgb(252, 139, 127);
+    cursor: pointer;
+  }
+
+  .accordion__item:hover .accordion__header-interactive {
+    transform: rotate(-45deg);
+    transition: .5s all;
+  }
+
+  .accordion__item:hover .accordion__content {
+    display: block;
+    padding: 0.7rem 0 1rem;
+    cursor: pointer;
+    animation: smooth .5s ease-in;
+  }
+
+}
